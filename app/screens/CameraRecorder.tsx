@@ -1,42 +1,51 @@
-import React, {useRef} from 'react';
+import {faCircle, faStop} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import React, {useEffect, useRef} from 'react';
 import {
   PermissionsAndroid,
   Platform,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import {Camera, useCameraDevices} from 'react-native-vision-camera';
 
 async function requestCameraPermission(): Promise<void> {
   if (Platform.OS === 'android') {
-    const cameraAllowed = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.CAMERA,
-    );
-
-    if (cameraAllowed === PermissionsAndroid.RESULTS.GRANTED) {
-      console.log('You can use the camera');
-    } else {
-      console.log('Camera permission denied');
-    }
+    await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
   }
+  const newCameraPermission = await Camera.requestCameraPermission();
+  console.log(`CameraPermission: ${newCameraPermission}`);
+  const newMicrophonePermission = await Camera.requestMicrophonePermission();
+  console.log(`MicrophonePermission: ${newMicrophonePermission}`);
 }
 
 function CameraRecorder() {
   const [isRecording, setIsRecording] = React.useState(false);
+  const [mounted, setMounted] = React.useState(false);
+  const [cameraOpen, setCameraOpen] = React.useState(false);
   const camera = useRef<Camera>(null);
   const devices = useCameraDevices();
   const device = devices.back;
-  requestCameraPermission();
+  useEffect(() => {
+    setMounted(true);
+    return () => {
+      setMounted(false);
+    };
+  }, []);
+  useEffect(() => {
+    if (!mounted) {
+      return;
+    }
+    requestCameraPermission();
+  }, [mounted]);
+
   async function startRecording() {
-    setIsRecording(true);
     if (!camera?.current) {
       return;
     }
-    const newCameraPermission = await Camera.requestCameraPermission();
-    console.log(newCameraPermission);
-    const newMicrophonePermission = await Camera.requestMicrophonePermission();
-    console.log(newMicrophonePermission);
+    setIsRecording(true);
     camera.current.startRecording({
       flash: 'on',
       onRecordingFinished: video => console.log(video),
@@ -44,35 +53,73 @@ function CameraRecorder() {
     });
   }
   function stopRecording() {
-    setIsRecording(false);
     if (!camera?.current) {
       return;
     }
+    setIsRecording(false);
     camera.current.stopRecording();
   }
 
   if (device == null) {
     return (
       <View>
-        <Text>CameraRecorder</Text>
+        <Text>No Camera Was Found!</Text>
       </View>
     );
   }
+
   return (
     <>
-      {/* <View style={{zIndex: 1}}>
-        <Button title="Start" onPress={startRecording} />
-        <Button title="Stop" onPress={stopRecording} />
-      </View> */}
-      <Camera
-        video={true}
-        audio={false}
-        style={StyleSheet.absoluteFill}
-        device={device}
-        isActive={true}
-        ref={camera}
-      />
+      {!cameraOpen && (
+        <>
+          <Camera
+            video={true}
+            audio={false}
+            style={StyleSheet.absoluteFill}
+            device={device}
+            isActive={true}
+            ref={camera}
+          />
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              onPress={() => {
+                if (isRecording) {
+                  stopRecording();
+                } else {
+                  startRecording();
+                }
+              }}
+              style={[
+                styles.recordButton,
+                {backgroundColor: isRecording ? 'red' : 'green'},
+              ]}>
+              <FontAwesomeIcon
+                icon={isRecording ? faStop : faCircle}
+                size={30}
+                color="white"
+              />
+            </TouchableOpacity>
+          </View>
+        </>
+      )}
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 30,
+    alignSelf: 'center',
+    zIndex: 1,
+  },
+  recordButton: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+
 export default CameraRecorder;
