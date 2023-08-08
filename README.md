@@ -8,6 +8,6 @@
 * Camera record video and save to local
 * Flash on /off
 * Weather app with GPS location detection
-* Google maps & navigation
+* Google maps & GPS
 * Alarm app & handle device restart
 * Navigation between different apps
