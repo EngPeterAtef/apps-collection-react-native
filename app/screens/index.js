@@ -1,3 +1,4 @@
 import FlashLight from './FlashLight';
 import Home from './Home';
-export {FlashLight, Home};
+import TextToSpeech from './TextToSpeech';
+export {FlashLight, Home, TextToSpeech};

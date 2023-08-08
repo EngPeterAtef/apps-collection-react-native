@@ -1,4 +1,4 @@
-import {faLightbulb} from '@fortawesome/free-solid-svg-icons';
+import {faLightbulb, faMicrophone} from '@fortawesome/free-solid-svg-icons';
 import {faMugSaucer} from '@fortawesome/free-solid-svg-icons/faMugSaucer';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React from 'react';
@@ -24,13 +24,13 @@ function Home({navigation}: any): JSX.Element {
               style={styles.btn}
               onPress={() => navigation.navigate('FlashLight')}>
               <FontAwesomeIcon size={30} color="blue" icon={faLightbulb} />
-              <Text style={styles.btnText}>FlashLight</Text>
+              <Text style={styles.btnText}>Flash Light</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.btn}
-              onPress={() => navigation.navigate('Details')}>
-              <FontAwesomeIcon size={30} icon={faMugSaucer} />
-              <Text style={styles.btnText}>Details</Text>
+              onPress={() => navigation.navigate('TextToSpeech')}>
+              <FontAwesomeIcon size={30} icon={faMicrophone} />
+              <Text style={styles.btnText}>Text To Speech</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.btn}
@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   navigationContainer: {
-    width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
@@ -76,6 +75,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    width: 150,
   },
   text: {color: 'black', fontSize: 32, fontWeight: 'bold', margin: 10},
 });

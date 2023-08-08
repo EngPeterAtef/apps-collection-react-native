@@ -22,3 +22,6 @@ function App(): JSX.Element {
 const styles = StyleSheet.create({});
 
 export default App;
+
+import {LogBox} from 'react-native';
+LogBox.ignoreLogs(['new NativeEventEmitter()']);
