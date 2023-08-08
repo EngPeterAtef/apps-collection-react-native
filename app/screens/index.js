@@ -1,3 +1,3 @@
+import FlashLight from './FlashLight';
 import Home from './Home';
-
-export {Home};
+export {FlashLight, Home};

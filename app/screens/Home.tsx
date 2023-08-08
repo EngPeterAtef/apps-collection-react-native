@@ -1,3 +1,4 @@
+import {faLightbulb} from '@fortawesome/free-solid-svg-icons';
 import {faMugSaucer} from '@fortawesome/free-solid-svg-icons/faMugSaucer';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React from 'react';
@@ -21,9 +22,9 @@ function Home({navigation}: any): JSX.Element {
           <View style={styles.navigationContainer}>
             <TouchableOpacity
               style={styles.btn}
-              onPress={() => navigation.navigate('Details')}>
-              <FontAwesomeIcon size={30} icon={faMugSaucer} />
-              <Text style={styles.btnText}>Details</Text>
+              onPress={() => navigation.navigate('FlashLight')}>
+              <FontAwesomeIcon size={30} color="blue" icon={faLightbulb} />
+              <Text style={styles.btnText}>FlashLight</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.btn}
