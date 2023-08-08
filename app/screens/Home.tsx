@@ -1,5 +1,9 @@
-import {faLightbulb, faMicrophone} from '@fortawesome/free-solid-svg-icons';
-import {faMugSaucer} from '@fortawesome/free-solid-svg-icons/faMugSaucer';
+import {
+  faCamera,
+  faLightbulb,
+  faMicrophone,
+  faMugSaucer,
+} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import {
@@ -40,9 +44,9 @@ function Home({navigation}: any): JSX.Element {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.btn}
-              onPress={() => navigation.navigate('Details')}>
-              <FontAwesomeIcon size={30} icon={faMugSaucer} />
-              <Text style={styles.btnText}>Details</Text>
+              onPress={() => navigation.navigate('Camera')}>
+              <FontAwesomeIcon size={30} icon={faCamera} />
+              <Text style={styles.btnText}>Camera</Text>
             </TouchableOpacity>
           </View>
         </View>
