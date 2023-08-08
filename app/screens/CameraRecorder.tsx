@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import Video from 'react-native-video';
 import {Camera, useCameraDevices} from 'react-native-vision-camera';
 
 async function requestCameraPermission(): Promise<void> {
@@ -25,6 +26,7 @@ function CameraRecorder() {
   const [isRecording, setIsRecording] = React.useState(false);
   const [mounted, setMounted] = React.useState(false);
   const [cameraOpen, setCameraOpen] = React.useState(false);
+  const [recordedVideo, setRecordedVideo]: [any, any] = React.useState(null);
   const camera = useRef<Camera>(null);
   const devices = useCameraDevices();
   const device = devices.back;
@@ -48,16 +50,20 @@ function CameraRecorder() {
     setIsRecording(true);
     camera.current.startRecording({
       flash: 'on',
-      onRecordingFinished: video => console.log(video),
+      onRecordingFinished: video => {
+        console.log(video);
+        setRecordedVideo(video);
+      },
       onRecordingError: error => console.error(error),
     });
   }
-  function stopRecording() {
+  async function stopRecording() {
     if (!camera?.current) {
       return;
     }
+    await camera.current.stopRecording();
     setIsRecording(false);
-    camera.current.stopRecording();
+    setCameraOpen(false);
   }
 
   if (device == null) {
@@ -70,7 +76,23 @@ function CameraRecorder() {
 
   return (
     <>
-      {!cameraOpen && (
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={styles.openBtn}
+          onPress={() => setCameraOpen(!cameraOpen)}>
+          <Text style={styles.openBtnText}>Open Camera</Text>
+        </TouchableOpacity>
+      </View>
+      {recordedVideo && !cameraOpen && (
+        <View style={styles.videoContainer}>
+          <Video
+            source={{uri: recordedVideo.path}}
+            style={styles.video}
+            controls={true}
+          />
+        </View>
+      )}
+      {cameraOpen && (
         <>
           <Camera
             video={true}
@@ -106,20 +128,47 @@ function CameraRecorder() {
   );
 }
 
+export default CameraRecorder;
+
 const styles = StyleSheet.create({
-  buttonContainer: {
-    position: 'absolute',
-    bottom: 30,
-    alignSelf: 'center',
-    zIndex: 1,
+  container: {
+    // flex: 1,
+    backgroundColor: 'white',
+    padding: 10,
   },
-  recordButton: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
+  openBtn: {
+    backgroundColor: 'green',
+    padding: 10,
+    borderRadius: 5,
+    marginVertical: 10,
+  },
+  openBtnText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 20,
+  },
+  videoContainer: {
+    flex: 1,
+    backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
   },
+  video: {
+    width: '100%',
+    height: '100%',
+  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 20,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  recordButton: {
+    padding: 20,
+    borderRadius: 50,
+    borderWidth: 5,
+    borderColor: 'white',
+  },
 });
-
-export default CameraRecorder;
