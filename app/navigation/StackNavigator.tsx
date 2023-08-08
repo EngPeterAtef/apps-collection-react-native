@@ -1,6 +1,6 @@
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
+import { FlashLight, Home, TextToSpeech } from '../screens';
 import React from 'react';
-import {FlashLight, Home, TextToSpeech} from '../screens';
 
 const Stack = createStackNavigator();
 
