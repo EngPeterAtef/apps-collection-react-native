@@ -1,11 +1,11 @@
 import {
   faCamera,
   faLightbulb,
+  faMapPin,
   faMicrophone,
   faMugSaucer,
-  faMapPin,
 } from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import {
   SafeAreaView,
@@ -15,9 +15,9 @@ import {
   Text,
   View,
 } from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-function Home({navigation}: any): JSX.Element {
+function Home({ navigation }: any): JSX.Element {
   return (
     <SafeAreaView>
       <StatusBar />
@@ -39,9 +39,9 @@ function Home({navigation}: any): JSX.Element {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.btn}
-              onPress={() => navigation.navigate('Details')}>
-              <FontAwesomeIcon size={30} icon={faMugSaucer} />
-              <Text style={styles.btnText}>Details</Text>
+              onPress={() => navigation.navigate('Maps')}>
+              <FontAwesomeIcon size={30} icon={faMapPin} />
+              <Text style={styles.btnText}>Maps</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.btn}
@@ -51,9 +51,9 @@ function Home({navigation}: any): JSX.Element {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.btn}
-              onPress={() => navigation.navigate('Camera')}>
-              <FontAwesomeIcon size={30} icon={faMapPin} />
-              <Text style={styles.btnText}>Maps</Text>
+              onPress={() => navigation.navigate('Details')}>
+              <FontAwesomeIcon size={30} icon={faMugSaucer} />
+              <Text style={styles.btnText}>Details</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexWrap: 'wrap',
   },
-  btnText: {color: 'black', fontSize: 20, fontWeight: 'bold'},
+  btnText: { color: 'black', fontSize: 20, fontWeight: 'bold' },
   btn: {
     backgroundColor: 'white',
     borderRadius: 10,
@@ -88,5 +88,5 @@ const styles = StyleSheet.create({
     padding: 20,
     width: 150,
   },
-  text: {color: 'black', fontSize: 32, fontWeight: 'bold', margin: 10},
+  text: { color: 'black', fontSize: 32, fontWeight: 'bold', margin: 10 },
 });

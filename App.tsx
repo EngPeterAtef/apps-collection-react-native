@@ -16,5 +16,5 @@ const styles = StyleSheet.create({});
 
 export default App;
 
-import {LogBox} from 'react-native';
-LogBox.ignoreLogs(['new NativeEventEmitter()']);
+// import {LogBox} from 'react-native';
+// LogBox.ignoreLogs(['new NativeEventEmitter()']);

@@ -11,7 +11,12 @@ function StackNavigator(): JSX.Element {
       <Stack.Screen name="FlashLight" component={FlashLight} />
       <Stack.Screen name="TextToSpeech" component={TextToSpeech} />
       <Stack.Screen name="Camera" component={CameraRecorder} />
-      <Stack.Screen name="Maps" component={GoogleMapsScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Maps" component={GoogleMapsScreen} options={{
+        headerShown: false, headerBackAllowFontScaling: true, animationEnabled: true,
+        headerTitle: 'Google Maps', headerTitleAlign: 'center', headerTitleStyle: { fontSize: 20, fontWeight: 'bold', color: 'black' },
+        headerBackAccessibilityLabel: 'Go back to home screen',
+        headerMode: 'float',
+      }} />
     </Stack.Navigator>
   );
 }
