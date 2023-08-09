@@ -2,11 +2,11 @@ import {
   faCamera,
   faLightbulb,
   faMicrophone,
-  faMugSaucer,
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import {
+  Image,
   ImageBackground,
   SafeAreaView,
   ScrollView,
@@ -25,7 +25,6 @@ function Home({navigation}: any): JSX.Element {
       source={require('../assets/images/background.jpg')}
       resizeMode="cover"
       style={{
-        // flex: 1,
         width: '100%',
         height: '100%',
         justifyContent: 'center',
@@ -34,10 +33,18 @@ function Home({navigation}: any): JSX.Element {
         <StatusBar />
         <ScrollView>
           <View style={styles.container}>
-            {/* <Image
-              source={image}
-              style={{resizeMode: 'contain', width: 300, height: 300}}
-            /> */}
+            <Text style={styles.text}>
+              Welcome To React Native{' '}
+              <Image
+                source={image}
+                style={{
+                  padding: 10,
+                  resizeMode: 'contain',
+                  width: 60,
+                  height: 60,
+                }}
+              />
+            </Text>
             <View style={styles.navigationContainer}>
               <TouchableOpacity
                 style={styles.btn}
@@ -50,30 +57,6 @@ function Home({navigation}: any): JSX.Element {
                 onPress={() => navigation.navigate('TextToSpeech')}>
                 <FontAwesomeIcon size={30} icon={faMicrophone} />
                 <Text style={styles.btnText}>Text To Speech</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.btn}
-                onPress={() => navigation.navigate('Details')}>
-                <FontAwesomeIcon size={30} icon={faMugSaucer} />
-                <Text style={styles.btnText}>Details</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.btn}
-                onPress={() => navigation.navigate('Camera')}>
-                <FontAwesomeIcon size={30} icon={faCamera} />
-                <Text style={styles.btnText}>Camera</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.btn}
-                onPress={() => navigation.navigate('Camera')}>
-                <FontAwesomeIcon size={30} icon={faCamera} />
-                <Text style={styles.btnText}>Camera</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.btn}
-                onPress={() => navigation.navigate('Camera')}>
-                <FontAwesomeIcon size={30} icon={faCamera} />
-                <Text style={styles.btnText}>Camera</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.btn}
@@ -119,13 +102,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 32,
     fontWeight: 'bold',
-    margin: 10,
     textAlign: 'center',
-    color: '#FF0032',
+    color: 'white',
     padding: 10,
     borderRadius: 10,
-    borderColor: 'black',
-    borderWidth: 1,
   },
 });
 

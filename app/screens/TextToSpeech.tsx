@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {
+  ImageBackground,
   StyleSheet,
   Text,
   TextInput,
@@ -22,17 +23,27 @@ const TextToSpeech = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter text..."
-        onChangeText={handleInputChange}
-        value={inputText}
-      />
-      <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
-        <Text style={styles.buttonText}>Speak</Text>
-      </TouchableOpacity>
-    </View>
+    <ImageBackground
+      source={require('../assets/images/background.jpg')}
+      resizeMode="cover"
+      style={{
+        // flex: 1,
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+      }}>
+      <View style={styles.container}>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter text..."
+          onChangeText={handleInputChange}
+          value={inputText}
+        />
+        <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
+          <Text style={styles.buttonText}>Speak</Text>
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
   );
 };
 
