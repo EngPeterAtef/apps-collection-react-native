@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  ImageBackground,
   Platform,
   StyleSheet,
   Text,
@@ -13,14 +14,26 @@ import Torch from 'react-native-torch';
 function FlashLight(): JSX.Element {
   const [isTorchOn, setIsTorchOn] = React.useState(false);
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Flash Light</Text>
-      <TouchableOpacity
-        style={btn(isTorchOn)}
-        onPress={() => handleFlashLight(isTorchOn, setIsTorchOn)}>
-        <Text style={styles.btnText}>{isTorchOn ? 'Turn On' : 'Turn Off'}</Text>
-      </TouchableOpacity>
-    </View>
+    <ImageBackground
+      source={require('../assets/images/background.jpg')}
+      resizeMode="cover"
+      style={{
+        // flex: 1,
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+      }}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Flash Light</Text>
+        <TouchableOpacity
+          style={btn(isTorchOn)}
+          onPress={() => handleFlashLight(isTorchOn, setIsTorchOn)}>
+          <Text style={styles.btnText}>
+            {isTorchOn ? 'Turn On' : 'Turn Off'}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
   );
 }
 
