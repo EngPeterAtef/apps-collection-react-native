@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Image,
   SafeAreaView,
@@ -7,9 +7,19 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 export default function GoogleMapsScreen({navigation}) {
-  const backBtn = '<';
+  // map of markers
+  const [markers, setMarkers] = useState([
+    {
+      latlng: {
+        latitude: 30.016316,
+        longitude: 31.19451,
+      },
+      title: 'Home',
+      description: 'Home',
+    },
+  ]);
   return (
     <SafeAreaView style={styles.contaier}>
       <View style={styles.appBar}>
@@ -35,8 +45,16 @@ export default function GoogleMapsScreen({navigation}) {
           longitude: 31.19451,
           latitudeDelta: 0.002,
           longitudeDelta: 0.002,
-        }}
-      />
+        }}>
+        {markers.map((marker, index) => (
+          <Marker
+            key={index}
+            coordinate={marker.latlng}
+            title={marker.title}
+            description={marker.description}
+          />
+        ))}
+      </MapView>
     </SafeAreaView>
   );
 }
