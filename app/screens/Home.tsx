@@ -50,7 +50,7 @@ function Home({navigation}: any): JSX.Element {
               <TouchableOpacity
                 style={styles.btn}
                 onPress={() => navigation.navigate('FlashLight')}>
-                <FontAwesomeIcon size={30} color="blue" icon={faLightbulb} />
+                <FontAwesomeIcon size={30} color="black" icon={faLightbulb} />
                 <Text style={styles.btnText}>Flash Light</Text>
               </TouchableOpacity>
               <TouchableOpacity

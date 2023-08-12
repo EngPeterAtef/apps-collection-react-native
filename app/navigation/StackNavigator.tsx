@@ -7,6 +7,7 @@ const Stack = createStackNavigator();
 function StackNavigator(): JSX.Element {
   return (
     <Stack.Navigator
+      initialRouteName="Maps"
       screenOptions={{
         headerStyle: {
           borderBottomEndRadius: 30,
@@ -22,7 +23,8 @@ function StackNavigator(): JSX.Element {
         headerBackgroundContainerStyle: {
           backgroundColor: '#2e1980',
         },
-      }}>
+      }}
+      >
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="FlashLight" component={FlashLight} />
       <Stack.Screen name="TextToSpeech" component={TextToSpeech} />

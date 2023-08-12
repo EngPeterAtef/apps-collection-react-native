@@ -1,19 +1,26 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, TextInput, View} from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 export default function GoogleMapsScreen({navigation}) {
+  const backBtn = '<';
   return (
     <SafeAreaView style={styles.contaier}>
       <View style={styles.appBar}>
-        {/* <TouchableOpacity
-          style={styles.btnContainer}
-          onPress={() => navigation.goBack()}>
-          <Image
-            source={'../../assets/icons/chevron-left.png'}
-            resizeMode="contain"
-            style={styles.btnImg('60%')}
-          />
-        </TouchableOpacity> */}
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <View style={styles.btnContainer}>
+            <Image
+              source={require('../../assets/icons/chevron-left.png')}
+              style={styles.btnImg(25)}
+            />
+          </View>
+        </TouchableOpacity>
         <TextInput
           placeholder="Search..."
           placeholderTextColor="black"
@@ -24,10 +31,10 @@ export default function GoogleMapsScreen({navigation}) {
         provider={PROVIDER_GOOGLE}
         style={styles.map}
         region={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.015,
-          longitudeDelta: 0.0121,
+          latitude: 30.016316,
+          longitude: 31.19451,
+          latitudeDelta: 0.002,
+          longitudeDelta: 0.002,
         }}
       />
     </SafeAreaView>
@@ -65,6 +72,9 @@ const styles = StyleSheet.create({
     // position: 'absolute',
     // left: 10,
     marginHorizontal: 10,
+    color: 'black',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   appBarTitle: {
     fontSize: 18,
@@ -83,8 +93,8 @@ const styles = StyleSheet.create({
   btnContainer: {
     width: 40,
     height: 40,
-    // backgroundColor: 'white',
-    borderRadius: 12 / 1.25,
+    // backgroundColor: 'black',
+    borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
   },
