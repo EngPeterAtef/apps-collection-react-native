@@ -2,6 +2,7 @@ import {faCircle, faStop} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React, {useEffect, useRef} from 'react';
 import {
+  ImageBackground,
   PermissionsAndroid,
   Platform,
   StyleSheet,
@@ -75,7 +76,15 @@ function CameraRecorder() {
   }
 
   return (
-    <>
+    <ImageBackground
+      source={require('../assets/images/background.jpg')}
+      resizeMode="cover"
+      style={{
+        // flex: 1,
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+      }}>
       <View style={styles.container}>
         <TouchableOpacity
           style={styles.openBtn}
@@ -125,7 +134,7 @@ function CameraRecorder() {
           </View>
         </>
       )}
-    </>
+    </ImageBackground>
   );
 }
 
@@ -133,7 +142,6 @@ export default CameraRecorder;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
     padding: 10,
   },
   openBtn: {
