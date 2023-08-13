@@ -66,7 +66,3 @@ yarn-error.log
 /coverage
 
 constants.js
-# Expo
-.expo
-dist/
-web-build/
