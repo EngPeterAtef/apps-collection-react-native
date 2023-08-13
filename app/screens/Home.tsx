@@ -1,5 +1,6 @@
 import {
   faCamera,
+  faFingerprint,
   faIdBadge,
   faLightbulb,
   faMapPin,
@@ -78,6 +79,12 @@ function Home({ navigation }: any): JSX.Element {
                 <FontAwesomeIcon size={30} icon={faIdBadge} />
                 <Text style={styles.btnText}>Face Auth</Text>
               </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.btn}
+                onPress={() => navigation.navigate('Fingerprint Auth')}>
+                <FontAwesomeIcon size={30} icon={faFingerprint} />
+                <Text style={[styles.btnText, { fontSize: 18 }]}>Fingerprint Auth</Text>
+              </TouchableOpacity>
             </View>
           </View>
         </ScrollView>
@@ -99,7 +106,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexWrap: 'wrap',
   },
-  btnText: { color: 'black', fontSize: 20, fontWeight: 'bold' },
+  btnText: {
+    color: 'black',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
   btn: {
     backgroundColor: 'white',
     borderRadius: 10,

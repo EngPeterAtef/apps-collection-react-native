@@ -1,13 +1,13 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { CameraRecorder, FaceAuth, FlashLight, Home, TextToSpeech } from '../screens';
+import { CameraRecorder, FaceAuth, FingerprintAuth, FlashLight, Home, TextToSpeech } from '../screens';
 import GoogleMapsScreen from '../screens/google-maps/index';
 const Stack = createStackNavigator();
 
 function StackNavigator(): JSX.Element {
   return (
     <Stack.Navigator
-      initialRouteName="Face Auth"
+      initialRouteName="Home"
       screenOptions={{
         headerStyle: {
           borderBottomEndRadius: 30,
@@ -30,6 +30,7 @@ function StackNavigator(): JSX.Element {
       <Stack.Screen name="TextToSpeech" component={TextToSpeech} />
       <Stack.Screen name="Camera" component={CameraRecorder} />
       <Stack.Screen name="Face Auth" component={FaceAuth} options={{ headerShown: false }} />
+      <Stack.Screen name="Fingerprint Auth" component={FingerprintAuth} options={{ headerShown: false }} />
       <Stack.Screen name="Maps" component={GoogleMapsScreen} options={{
         headerShown: false, headerBackAllowFontScaling: true, animationEnabled: true,
         headerTitle: 'Google Maps', headerTitleAlign: 'center', headerTitleStyle: { fontSize: 20, fontWeight: 'bold', color: 'black' },
