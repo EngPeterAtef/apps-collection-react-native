@@ -1,5 +1,6 @@
 import {
   faCamera,
+  faIdBadge,
   faLightbulb,
   faMapPin,
   faMicrophone,
@@ -16,11 +17,11 @@ import {
   Text,
   View,
 } from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 const image = {
   uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png',
 };
-function Home({navigation}: any): JSX.Element {
+function Home({ navigation }: any): JSX.Element {
   return (
     <ImageBackground
       source={require('../assets/images/background.jpg')}
@@ -70,6 +71,12 @@ function Home({navigation}: any): JSX.Element {
                 onPress={() => navigation.navigate('Maps')}>
                 <FontAwesomeIcon size={30} icon={faMapPin} />
                 <Text style={styles.btnText}>Maps</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.btn}
+                onPress={() => navigation.navigate('Face Auth')}>
+                <FontAwesomeIcon size={30} icon={faIdBadge} />
+                <Text style={styles.btnText}>Face Auth</Text>
               </TouchableOpacity>
             </View>
           </View>
