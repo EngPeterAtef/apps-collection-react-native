@@ -1,9 +1,10 @@
 import {
   faCamera,
   faLightbulb,
+  faMapPin,
   faMicrophone,
 } from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import {
   Image,
@@ -49,7 +50,7 @@ function Home({navigation}: any): JSX.Element {
               <TouchableOpacity
                 style={styles.btn}
                 onPress={() => navigation.navigate('FlashLight')}>
-                <FontAwesomeIcon size={30} color="blue" icon={faLightbulb} />
+                <FontAwesomeIcon size={30} color="black" icon={faLightbulb} />
                 <Text style={styles.btnText}>Flash Light</Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -63,6 +64,12 @@ function Home({navigation}: any): JSX.Element {
                 onPress={() => navigation.navigate('Camera')}>
                 <FontAwesomeIcon size={30} icon={faCamera} />
                 <Text style={styles.btnText}>Camera</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.btn}
+                onPress={() => navigation.navigate('Maps')}>
+                <FontAwesomeIcon size={30} icon={faMapPin} />
+                <Text style={styles.btnText}>Maps</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -85,7 +92,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexWrap: 'wrap',
   },
-  btnText: {color: 'black', fontSize: 20, fontWeight: 'bold'},
+  btnText: { color: 'black', fontSize: 20, fontWeight: 'bold' },
   btn: {
     backgroundColor: 'white',
     borderRadius: 10,
