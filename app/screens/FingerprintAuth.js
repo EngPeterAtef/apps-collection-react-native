@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
 export default function FingerprintAuth({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
